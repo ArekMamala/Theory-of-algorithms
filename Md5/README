@@ -1,0 +1,18 @@
+
+Plain text => 512 bits
+MD5 = 128 bits
+
+1. Append Padding => if less than 512 bits has to be 64 bits less than multiple of 512
+2. Append 64 bit Representation 
+    plain text length => multiple of 512 
+3. Initialize the md buffers (size 32 bits) need 4 buffers 
+4. Process each block (512)
+5. output (message Digest in buffers)
+
+Example:
+    if the plain text is 
+        512 - 64 = 448
+        => 448+64 = 512 therefore its a multiple of 512
+        1024 -54 = 960
+        => 960+64 = 1024 therefore its a multiple of 512
+
