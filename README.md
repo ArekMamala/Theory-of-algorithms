@@ -26,7 +26,7 @@ MD5 = 128 bits
 4. Process each block (512)
 5. output (message Digest in buffers)
 
-
+<img src="https://github.com/ArekMamala/Theory-of-algorithms/blob/master/Md5/Assets/MessageAndDiggest.png" width="1000" height="400" />
 #### Example:
 + if the plain text is 512
 + 512 - 64 = 448
@@ -36,10 +36,10 @@ MD5 = 128 bits
 => 960+64 = 1024 therefore its a multiple of 512
 
 ### Message Processing
-<img src="https://github.com/ArekMamala/Theory-of-algorithms/blob/master/Md5/ProccessingOfInputPart1.jpg" data-canonical-src="https://github.com/ArekMamala/Theory-of-algorithms/blob/master/Md5/ProccessingOfInputPart1.jpg" width="400" height="400" />
 
-<img src="https://github.com/ArekMamala/Theory-of-algorithms/blob/master/Md5/ProccessingOfInputPart2.jpg" data-canonical-src="https://github.com/ArekMamala/Theory-of-algorithms/blob/master/Md5/ProccessingOfInputPart2.jpg" width="400" height="400" />
+<img src="https://github.com/ArekMamala/Theory-of-algorithms/blob/master/Md5/Assets/ProccessingOfInputPart1.jpg" width="400" height="400" />
 
+<img src="https://github.com/ArekMamala/Theory-of-algorithms/blob/master/Md5/Assets/ProccessingOfInputPart2.jpg" width="400" height="400" />
 
 ### References
 + https://searchsecurity.techtarget.com/definition/MD5
