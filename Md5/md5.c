@@ -109,6 +109,7 @@ static void md5(union block *x, VAR *value)
   c = value[2];
   d = value[3];
 
+  
   /* Round 1 */
   FF(a, b, c, d, x->threetwo[0], S11, 0xd76aa478); /* 1 */
   FF(d, a, b, c, x[1], S12, 0xe8c7b756);           /* 2 */
@@ -185,6 +186,8 @@ static void md5(union block *x, VAR *value)
   value[1] += b;
   value[2] += c;
   value[3] += d;
+
+
 }
 
 int main(int argc, char *argv[])
