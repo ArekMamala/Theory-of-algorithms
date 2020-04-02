@@ -147,7 +147,7 @@ int nextblock(union block *M, FILE *infile, uint64_t *nobits, enum flag *status)
 
 
 
-static void md5_hash(union block *x, VAR *value)
+static void md5_hash(union block *M, uint32_t *H)
 {
   uint32_t a, b, c, d;
   a = value[0];
