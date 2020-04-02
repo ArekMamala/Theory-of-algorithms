@@ -147,7 +147,7 @@ int nextblock(union block *M, FILE *infile, uint64_t *nobits, enum flag *status)
 
 
 
-static void md5(union block *x, VAR *value)
+static void md5_hash(union block *x, VAR *value)
 {
   uint32_t a, b, c, d;
   a = value[0];
@@ -241,6 +241,7 @@ int main(int argc, char *argv[])
   //file reading from sha256 example
   if (argc != 2)
   {
+    //if the amount of iles is not right
     printf("Error: expected single filename as argument.\n");
     return 1;
   }
@@ -248,9 +249,35 @@ int main(int argc, char *argv[])
   FILE *infile = fopen(argv[1], "rb");
   if (!infile)
   {
+    //if there is no file
     printf("Error: couldn't open file %s.\n", argv[1]);
     return 1;
   }
-
+ 
+    uint32_t H[] = {
+    0x67452301, 0xefcdab89, 0x98badcfe, 0x10325476  
+  };
   
+  // The current padded message block.
+  union block M;
+  uint64_t nobits = 0;
+  enum flag status = READ;
+
+    // Read through all of the padded message blocks.
+    while (nextblock(&M, infile, &nobits, &status)) {
+      // Calculate the next hash value.
+      md5_hash(&M, H);
+    }
+
+    printf("\nHash value of file with MD5 algorithm\n");
+
+    //loop through h
+    for (int i = 0; i < 4; i++)
+      //print out hash
+      printf("%02" PRIX32 "", H[i]);
+    printf("\n");
+    //close file
+    fclose(infile);
+
+  return 0;
 }
