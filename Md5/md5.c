@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdint.h>
+#include <inttypes.h>
 
 // Resources
 // https://tools.ietf.org/html/rfc1321
@@ -26,25 +27,25 @@ Rotation is separate from addition to prevent recomputation.
  */
 #define FF(a, b, c, d, x, s, ac)                 \
   {                                              \
-    (a) += F((b), (c), (d)) + (x) + (UINT4)(ac); \
+    (a) += F((b), (c), (d)) + (x) + ac; \
     (a) = ROTATE_LEFT((a), (s));                 \
     (a) += (b);                                  \
   }
 #define GG(a, b, c, d, x, s, ac)                 \
   {                                              \
-    (a) += G((b), (c), (d)) + (x) + (UINT4)(ac); \
+    (a) += G((b), (c), (d)) + (x) + ac; \
     (a) = ROTATE_LEFT((a), (s));                 \
     (a) += (b);                                  \
   }
 #define HH(a, b, c, d, x, s, ac)                 \
   {                                              \
-    (a) += H((b), (c), (d)) + (x) + (UINT4)(ac); \
+    (a) += H((b), (c), (d)) + (x) + ac; \
     (a) = ROTATE_LEFT((a), (s));                 \
     (a) += (b);                                  \
   }
 #define II(a, b, c, d, x, s, ac)                 \
   {                                              \
-    (a) += I((b), (c), (d)) + (x) + (UINT4)(ac); \
+    (a) += I((b), (c), (d)) + (x) + ac; \
     (a) = ROTATE_LEFT((a), (s));                 \
     (a) += (b);                                  \
   }
@@ -171,7 +172,7 @@ static void md5_hash(union block *M, uint32_t *Hash)
   FF(d, a, b, c, M->threetwo[13], S12, 0xfd987193); /* 14 */
   FF(c, d, a, b, M->threetwo[14], S13, 0xa679438e); /* 15 */
   FF(b, c, d, a, M->threetwo[15], S14, 0x49b40821); /* 16 */
-M  /* Round 2 */
+  /* Round 2 */
   GG(a, b, c, d, M->threetwo[1], S21, 0xf61e2562);  /* 17 */
   GG(d, a, b, c, M->threetwo[6], S22, 0xc040b340);  /* 18 */
   GG(c, d, a, b, M->threetwo[11], S23, 0x265e5a51); /* 19 */
@@ -208,22 +209,22 @@ M  /* Round 2 */
   HH(b, c, d, a, M->threetwo[2], S34, 0xc4ac5665);  /* 48 */
 
   /* Round 4 */
-  II(a, b, c, d, M>threetwo[0], S41, 0xf4292244);  /* 49 */
-  II(d, a, b, c, M>threetwo[7], S42, 0x432aff97);  /* 50 */
-  II(c, d, a, b, M>threetwo[14], S43, 0xab9423a7); /* 51 */
-  II(b, c, d, a, M>threetwo[5], S44, 0xfc93a039);  /* 52 */
-  II(a, b, c, d, M>threetwo[12], S41, 0x655b59c3); /* 53 */
-  II(d, a, b, c, M>threetwo[3], S42, 0x8f0ccc92);  /* 54 */
-  II(c, d, a, b, M>threetwo[10], S43, 0xffeff47d); /* 55 */
-  II(b, c, d, a, M>threetwo[1], S44, 0x85845dd1);  /* 56 */
-  II(a, b, c, d, M>threetwo[8], S41, 0x6fa87e4f);  /* 57 */
-  II(d, a, b, c, M>threetwo[15], S42, 0xfe2ce6e0); /* 58 */
-  II(c, d, a, b, M>threetwo[6], S43, 0xa3014314);  /* 59 */
-  II(b, c, d, a, M>threetwo[13], S44, 0x4e0811a1); /* 60 */
-  II(a, b, c, d, M>threetwo[4], S41, 0xf7537e82);  /* 61 */
-  II(d, a, b, c, M>threetwo[11], S42, 0xbd3af235); /* 62 */
-  II(c, d, a, b, M>threetwo[2], S43, 0x2ad7d2bb);  /* 63 */
-  II(b, c, d, a, M>threetwo[9], S44, 0xeb86d391);  /* 64 */
+  II(a, b, c, d, M->threetwo[0], S41, 0xf4292244);  /* 49 */
+  II(d, a, b, c, M->threetwo[7], S42, 0x432aff97);  /* 50 */
+  II(c, d, a, b, M->threetwo[14], S43, 0xab9423a7); /* 51 */
+  II(b, c, d, a, M->threetwo[5], S44, 0xfc93a039);  /* 52 */
+  II(a, b, c, d, M->threetwo[12], S41, 0x655b59c3); /* 53 */
+  II(d, a, b, c, M->threetwo[3], S42, 0x8f0ccc92);  /* 54 */
+  II(c, d, a, b, M->threetwo[10], S43, 0xffeff47d); /* 55 */
+  II(b, c, d, a, M->threetwo[1], S44, 0x85845dd1);  /* 56 */
+  II(a, b, c, d, M->threetwo[8], S41, 0x6fa87e4f);  /* 57 */
+  II(d, a, b, c, M->threetwo[15], S42, 0xfe2ce6e0); /* 58 */
+  II(c, d, a, b, M->threetwo[6], S43, 0xa3014314);  /* 59 */
+  II(b, c, d, a, M->threetwo[13], S44, 0x4e0811a1); /* 60 */
+  II(a, b, c, d, M->threetwo[4], S41, 0xf7537e82);  /* 61 */
+  II(d, a, b, c, M->threetwo[11], S42, 0xbd3af235); /* 62 */
+  II(c, d, a, b, M->threetwo[2], S43, 0x2ad7d2bb);  /* 63 */
+  II(b, c, d, a, M->threetwo[9], S44, 0xeb86d391);  /* 64 */
 
   Hash[0] += a;
   Hash[1] += b;
@@ -271,7 +272,7 @@ int main(int argc, char *argv[])
     //loop through h
     for (int i = 0; i < 4; i++)
       //print out hash
-      printf("%02" PRIX32 "", H[i]);
+      printf("%02" PRIx32 "", H[i]);
     printf("\n");
     //close file
     fclose(infile);
