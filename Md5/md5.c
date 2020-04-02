@@ -136,13 +136,19 @@ int nextblock(union block *M, FILE *infile, uint64_t *nobits, enum flag *status)
     *status = FINISH;
     return 1;
   }
+  
+  // Otherwise we have read between 56 (incl) and 64 (excl) bytes.
+  M->eight[nobytesread] = 0x80;
+  for (int i = nobytesread + 1; i < 64; i++)
+    M->eight[i] = 0;
+  *status = PAD0;
+  return 1;
 }
 
 
 
 static void md5(union block *x, VAR *value)
 {
-  
   uint32_t a, b, c, d;
   a = value[0];
   b = value[1];
@@ -245,4 +251,6 @@ int main(int argc, char *argv[])
     printf("Error: couldn't open file %s.\n", argv[1]);
     return 1;
   }
+
+  
 }
