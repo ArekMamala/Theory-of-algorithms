@@ -68,6 +68,9 @@ Rotation is separate from addition to prevent recomputation.
 #define S43 15
 #define S44 21
 
+enum flag {READ, PAD0, FINISH};
+
+//padding for the files size 64 
 static unsigned char PADDING[64] = {
     0x80, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -101,8 +104,45 @@ union block {
   uint8_t eight[64];
 };
 
+//from sha 256 argorithm chenged to suit md5 p
+int nextblock(union block *M, FILE *infile, uint64_t *nobits, enum flag *status) {
+  //padding 
+  // no bytes variable
+  size_t nobytesread; 
+
+  if (*status == FINISH)
+    return 0;
+
+  int i;
+
+  if (*status == PAD0) {
+    for (i = 0; i < 56; i++)
+      M->eight[i] = 0x00;
+    M->sixfour[7] = *nobits;
+    *status = FINISH;
+    return 1;
+  }
+
+  nobytesread = fread(M->eight, 1, 64, infile);
+  if (nobytesread == 64)
+    return 1;
+
+  // If we can fit all padding in last block:
+  if (nobytesread < 56) {
+    M->eight[nobytesread] = 0x80;
+    for (int i = nobytesread + 1; i < 56; i++)
+      M->eight[i] = 0x00;
+    M->sixfour[7] = *nobits;
+    *status = FINISH;
+    return 1;
+  }
+}
+
+
+
 static void md5(union block *x, VAR *value)
 {
+  
   uint32_t a, b, c, d;
   a = value[0];
   b = value[1];

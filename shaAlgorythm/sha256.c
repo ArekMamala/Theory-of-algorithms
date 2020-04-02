@@ -73,6 +73,8 @@ enum flag {READ, PAD0, FINISH};
 
 int nextblock(union block *M, FILE *infile, uint64_t *nobits, enum flag *status) {
   
+  size_t nobytesread; 
+
   if (*status == FINISH)
     return 0;
 
@@ -84,7 +86,7 @@ int nextblock(union block *M, FILE *infile, uint64_t *nobits, enum flag *status)
     return 1;
   }
 
-  size_t nobytesread = fread(M->eight, 1, 64, infile);
+  nobytesread = fread(M->eight, 1, 64, infile);
   if (nobytesread == 64)
     return 1;
 
