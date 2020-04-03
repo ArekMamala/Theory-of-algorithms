@@ -11,6 +11,41 @@ Force [5]. The only pre-requisite is that your program performs the algorithm
 I suggest you allow the user to input some free text or a filename via the
 command line.
 
+## Project repository content
+  This trepository consists of three folders 
+  + .vscode
+  + Md5
+  + shaAlgorythm
+  Also consists of 
+  + gitignore
+  + README.md
+  
+  #### shaAlgorythm folder
+   This is the sha256 algorithm that has been developed through out finalyear semester 
+   in the course "Theory Of Algorithms".
+   + README.md
+   + Readme
+   + hello.c
+   + hello.py
+   + lookatbits
+   + lookatbits.c
+   + padding.c
+   + sha256
+   + sha256.c
+   + unions.c
+  
+  #### Md5 folder
+   + Assets folder
+     + MessageAndDiggest.pnh
+     + ProccessingOfInputPart1.jpg
+     + ProccessingOfInputPart2.jpg
+   + README
+   + a.out
+   + md5.c
+   + test
+  
+  ## How to run
+
 
 
 ### References
