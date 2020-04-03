@@ -71,7 +71,9 @@ command line.
        + "a.out" is the file created by compiling the c code
        + "test" is a testing empty text file
 
-
+## Reasearch 
+  * Reasearch for this project is in the wiki page of the project
+  * [https://github.com/ArekMamala/Theory-of-algorithms/wiki](https://github.com/ArekMamala/Theory-of-algorithms/wiki)
 ### References
 + https://searchsecurity.techtarget.com/definition/MD5
 + https://tools.ietf.org/html/rfc1321
