@@ -45,7 +45,31 @@ command line.
    + test
   
   ## How to run
-
+   #### To run the sha256 
+   1. Clone the repository 
+     + using terminal command "git clone https://github.com/ArekMamala/EmergingTechnologies.git"  
+     + or download zip and unzip it in chses destination
+   1. make your way into the shaAlgorythm folder using the following command
+     + "cd shaAlgorythm"
+   1. using terminal compile the algorithm using this command
+     + "sudo gcc sha25d.c" 
+   1. using terminal run the folowing command to run algorithm
+     + "./a.out test" 
+       + "a.out" is the file created by compiling the c code
+       + "test" is a testing empty text file
+   
+   #### To run the sha256 
+   1. Clone the repository 
+     + using terminal command "git clone https://github.com/ArekMamala/EmergingTechnologies.git"  
+     + or download zip and unzip it in chses destination
+   1. make your way into the Md5 folder using the following command
+     + "cd Md5"
+   1. using terminal compile the algorithm using this command
+     + "sudo gcc md5.c" 
+   1. using terminal run the folowing command to run algorithm
+     + "./a.out test" 
+       + "a.out" is the file created by compiling the c code
+       + "test" is a testing empty text file
 
 
 ### References
