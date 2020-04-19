@@ -45,7 +45,7 @@ command line.
    + test
   
   ## How to run
-   #### To run the sha256 
+   #### To run the md5 
    1. Clone the repository 
      + using terminal command "git clone https://github.com/ArekMamala/EmergingTechnologies.git"  
      + or download zip and unzip it in chses destination
