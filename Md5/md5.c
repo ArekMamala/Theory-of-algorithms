@@ -231,25 +231,17 @@ static void md5_hash(union block *M, uint32_t *Hash)
   Hash[3] += d;
 }
 
-int main(int argc, char *argv[])
-{
-  //file reading from sha256 example
-  if (argc != 2)
-  {
-    //if the amount of iles is not right
-    printf("Error: expected single filename as argument.\n");
-    return 1;
-  }
 
-  FILE *infile = fopen(argv[1], "rb");
+static void hashTheFile (){
+  
+  FILE *infile = fopen("test", "rb");
   if (!infile)
   {
     //if there is no file
-    printf("Error: couldn't open file %s.\n", argv[1]);
-    return 1;
+    printf("Error: couldn't open file s.\n");
   }
  
-    uint32_t H[] = {
+    uint32_t H[4] = {
     0x67452301, 0xefcdab89, 0x98badcfe, 0x10325476  
   };
   
@@ -274,5 +266,101 @@ int main(int argc, char *argv[])
     //close file
     fclose(infile);
 
-  return 0;
+}
+
+
+void writeToFile(char *str){
+    FILE *fptr;
+
+    // opening file in writing mode
+    fptr = fopen("test", "w");
+
+    // exiting program 
+    if (fptr == NULL) {
+        printf("Error!");
+        exit(1);
+    }
+    fprintf(fptr, "%s", str);
+    fclose(fptr);
+}
+
+
+int main(int argc, char *argv[])
+{
+
+  int i;
+  /*//file reading from sha256 example
+  if (argc != 2)
+  {
+    //if the amount of iles is not right
+    printf("Error: expected single filename as argument.\n");
+    return 1;
+  }*/
+
+  printf("\nplease enter one of the following command line arguments.\n\n");
+  printf("--help => How to run Program information.\n");
+  printf("--test => Automatic testing of the following strings.\n");
+  printf("--userInput => Testing of Users input.\n");
+  printf("--resources => Resoures of the project.\n\n");
+  
+  if( argc == 2 )
+  {
+      printf("The arguments supplied are:\n");
+      for(i = 1; i < argc; i++)
+      {
+          printf("%s\t", argv[i]);
+          if (strcmp(argv[i],"--help") == 0)
+          {
+            printf("*** HELP ***");
+            printf("\nplease enter one of the following command line arguments.\n\n");
+            printf("\t--help => How to run Program information.\n");
+            printf("\t--test => Automatic testing of the following strings.\n");
+            printf("\t--userInput => Testing of Users input.\n");
+            printf("\t--resources => Resoures of the project.\n\n");
+          }else if (strcmp(argv[i],"--test") == 0){
+            
+            printf("testing");
+
+            writeToFile("");
+            hashTheFile();
+            writeToFile("a");
+            hashTheFile();
+            writeToFile("abc");
+            hashTheFile();
+            writeToFile("message digest");
+            hashTheFile(); 
+            writeToFile("abcdefghijklmnopqrstuvwxyz");
+            hashTheFile();
+            writeToFile("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789");
+            hashTheFile(); 
+            writeToFile("12345678901234567890123456789012345678901234567890123456789012345678901234567890");
+            hashTheFile();
+
+          }else if (strcmp(argv[i],"--userInput")  == 0){
+           
+            printf("user Input");
+            char str[100] = ""; 
+            char fileName[100]  = "test.txt";
+            printf("\nEnter an string to hash: ");
+            scanf("%[^\n]%*c", str); 
+            writeToFile(str);
+            hashTheFile();
+
+
+          }else if (strcmp(argv[i],"--resources")  == 0){
+            printf("resources");
+          }else{
+            printf("\nplease enter one of the following command line arguments.\n\n");
+            printf("--help => How to run Program information.\n");
+            printf("--test => Automatic testing of the following strings.\n");
+            printf("--userInput => Testing of Users input.\n");
+            printf("--resources => Resoures of the project.\n\n");
+          }
+      }
+  }
+  else
+  {
+      printf("argument list is empty.\n");
+  }
+  
 }
