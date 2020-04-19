@@ -11,36 +11,69 @@ Force [5]. The only pre-requisite is that your program performs the algorithm
 I suggest you allow the user to input some free text or a filename via the
 command line.
 
-### What is the MD5 algorithm ?
-The MD5 hash function was originally designed for use as a 
-secure cryptographic hash algorithm for authenticating digital signatures
+## Project repository content
+  This trepository consists of three folders 
+  + .vscode
+  + Md5
+  + shaAlgorythm
+  Also consists of 
+  + gitignore
+  + README.md
+  
+  #### shaAlgorythm folder
+   This is the sha256 algorithm that has been developed through out finalyear semester 
+   in the course "Theory Of Algorithms".
+   + README.md
+   + Readme
+   + hello.c
+   + hello.py
+   + lookatbits
+   + lookatbits.c
+   + padding.c
+   + sha256
+   + sha256.c
+   + unions.c
+  
+  #### Md5 folder
+   + Assets folder
+     + MessageAndDiggest.pnh
+     + ProccessingOfInputPart1.jpg
+     + ProccessingOfInputPart2.jpg
+   + README
+   + a.out
+   + md5.c
+   + test
+  
+  ## How to run
+   #### To run the sha256 
+   1. Clone the repository 
+     + using terminal command "git clone https://github.com/ArekMamala/EmergingTechnologies.git"  
+     + or download zip and unzip it in chses destination
+   1. make your way into the shaAlgorythm folder using the following command
+     + "cd shaAlgorythm"
+   1. using terminal compile the algorithm using this command
+     + "sudo gcc sha25d.c" 
+   1. using terminal run the folowing command to run algorithm
+     + "./a.out test" 
+       + "a.out" is the file created by compiling the c code
+       + "test" is a testing empty text file
+   
+   #### To run the sha256 
+   1. Clone the repository 
+     + using terminal command "git clone https://github.com/ArekMamala/EmergingTechnologies.git"  
+     + or download zip and unzip it in chses destination
+   1. make your way into the Md5 folder using the following command
+     + "cd Md5"
+   1. using terminal compile the algorithm using this command
+     + "sudo gcc md5.c" 
+   1. using terminal run the folowing command to run algorithm
+     + "./a.out test" 
+       + "a.out" is the file created by compiling the c code
+       + "test" is a testing empty text file
 
-Plain text => 512 bits
-MD5 = 128 bits
-
-### Steps of the Algorithm
-1. Append Padding => if less than 512 bits has to be 64 bits less than multiple of 512
-2. Append 64 bit Representation 
-    plain text length => multiple of 512 
-3. Initialize the md buffers (size 32 bits) need 4 buffers 
-4. Process each block (512)
-5. output (message Digest in buffers)
-
-<img src="https://github.com/ArekMamala/Theory-of-algorithms/blob/master/Md5/Assets/MessageAndDiggest.png" width="1000" height="400" />
-#### Example:
-+ if the plain text is 512
-+ 512 - 64 = 448
-=> 448+64 = 512 therefore its a multiple of 512
-+ if the plain text is 1024
-+ 1024 -54 = 960
-=> 960+64 = 1024 therefore its a multiple of 512
-
-### Message Processing
-
-<img src="https://github.com/ArekMamala/Theory-of-algorithms/blob/master/Md5/Assets/ProccessingOfInputPart1.jpg" width="400" height="400" />
-
-<img src="https://github.com/ArekMamala/Theory-of-algorithms/blob/master/Md5/Assets/ProccessingOfInputPart2.jpg" width="400" height="400" />
-
+## Reasearch 
+  * Reasearch for this project is in the wiki page of the project
+  * [https://github.com/ArekMamala/Theory-of-algorithms/wiki](https://github.com/ArekMamala/Theory-of-algorithms/wiki)
 ### References
 + https://searchsecurity.techtarget.com/definition/MD5
 + https://tools.ietf.org/html/rfc1321
