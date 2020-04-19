@@ -45,7 +45,7 @@ command line.
    + test
   
   ## How to run
-   #### To run the md5 
+   #### To run the sha256 
    1. Clone the repository 
      + using terminal command "git clone https://github.com/ArekMamala/EmergingTechnologies.git"  
      + or download zip and unzip it in chses destination
@@ -58,7 +58,7 @@ command line.
        + "a.out" is the file created by compiling the c code
        + "test" is a testing empty text file
    
-   #### To run the sha256 
+   #### To run the md5 
    1. Clone the repository 
      + using terminal command "git clone https://github.com/ArekMamala/EmergingTechnologies.git"  
      + or download zip and unzip it in chses destination
