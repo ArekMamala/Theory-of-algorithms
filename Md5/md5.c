@@ -305,40 +305,55 @@ int main(int argc, char *argv[])
   
   if( argc == 2 )
   {
-      printf("The arguments supplied are:\n");
+      printf("The arguments supplied are: ");
       for(i = 1; i < argc; i++)
       {
           printf("%s\t", argv[i]);
           if (strcmp(argv[i],"--help") == 0)
           {
-            printf("*** HELP ***");
+            printf("\n*** HELP ***");
             printf("\nplease enter one of the following command line arguments.\n\n");
             printf("\t--help => How to run Program information.\n");
             printf("\t--test => Automatic testing of the following strings.\n");
-            printf("\t--userInput => Testing of Users input.\n");
-            printf("\t--resources => Resoures of the project.\n\n");
+            printf("\t\t''\n\t\t'a'\n\t\t'abc'\n\t\t'message digest'\n\t\t'abcdefghijklmnopqrstuvwxyz'\n\t\t'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'\n\t\t'12345678901234567890123456789012345678901234567890123456789012345678901234567890'");
+            printf("\n\t--userInput => Testing of Users input.\n");
+            printf("\t\tAllows the user to enter a string that will be hashed and print out the result to the user.\n");
+            printf("\t--resources => Resoures of the project.\n");
+            printf("\t\tA link to the project repository.\n\t\tLink to the projects readme & Reasearch.\n\n");
+            
           }else if (strcmp(argv[i],"--test") == 0){
             
-            printf("testing");
-
+            printf("\n*** Test ***");
             writeToFile("");
             hashTheFile();
+    
+            printf("\nString tested: 'a'");
             writeToFile("a");
             hashTheFile();
+
+            printf("\nString tested: 'abc'");
             writeToFile("abc");
             hashTheFile();
+
+            printf("\nString tested: 'message digest'");
             writeToFile("message digest");
-            hashTheFile(); 
+            hashTheFile();
+
+            printf("\nString tested: 'abcdefghijklmnopqrstuvwxyz'");
             writeToFile("abcdefghijklmnopqrstuvwxyz");
             hashTheFile();
+
+            printf("\nString tested: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'");
             writeToFile("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789");
-            hashTheFile(); 
+            hashTheFile();
+
+            printf("\nString tested: '12345678901234567890123456789012345678901234567890123456789012345678901234567890'");
             writeToFile("12345678901234567890123456789012345678901234567890123456789012345678901234567890");
             hashTheFile();
 
           }else if (strcmp(argv[i],"--userInput")  == 0){
            
-            printf("user Input");
+            printf("\n*** User Input ***");
             char str[100] = ""; 
             char fileName[100]  = "test.txt";
             printf("\nEnter an string to hash: ");
@@ -348,7 +363,13 @@ int main(int argc, char *argv[])
 
 
           }else if (strcmp(argv[i],"--resources")  == 0){
-            printf("resources");
+            printf("\n*** Resources ***");
+            printf("\nProject reposritory.\n");
+            printf("\thttps://github.com/ArekMamala/Theory-of-algorithms\n");
+            printf("Readme repository.\n");
+            printf("\thttps://github.com/ArekMamala/Theory-of-algorithms/blob/master/README.md\n"); 
+            printf("Reasearch repository.\n");
+            printf("\thttps://github.com/ArekMamala/Theory-of-algorithms/wiki\n"); 
           }else{
             printf("\nplease enter one of the following command line arguments.\n\n");
             printf("--help => How to run Program information.\n");
