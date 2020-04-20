@@ -74,7 +74,7 @@ To get the project downloaded the user can do this in two ways using the termina
 
 #### <p align="center">Test Cases for Command line Arguments
 |Test Case   |      Test      |  Expected Result |  Pass/Fail
-|----------|:-------------:|:------:|---------:|
+|:----------:|:-------------:|:------:|---------:|
 | 1 |No argument | output to user to enter an argument | PASS       |
 | 2 |Too many Arhuments   |  Error output too many arguments  | PASS       |
 | 3 | --help |    Help option is displayed to the user | PASS       |
@@ -85,7 +85,7 @@ To get the project downloaded the user can do this in two ways using the termina
 
 #### <p align="center">Test Cases for String hasshing
 |Test Case   |      Test      |  Expected Result |  Pass/Fail
-|----------|:-------------:|:------:|---------:|
+|:----------:|:-------------:|:------:|---------:|
 | 1 | "" | d41d8cd98f00b204e9800998ecf8427e | PASS|
 | 2 | "a" | 0cc175b9c0f1b6a831c399e269772661 | PASS|
 | 3 | "abc" | 900150983cd24fb0d6963f7d28e17f72  | PASS|
@@ -94,12 +94,60 @@ To get the project downloaded the user can do this in two ways using the termina
 | 6 | "ABCDEFGHIJKLMNOPQRSTUVWXYZab<br>cdefghijklmnopqrstuvwxyz0123456789" |    d174ab98d277d9f5a5611c2c9f419d9f  | PASS|
 | 7 | "123456789012345678901234567890123<br>45678901234567890123456789012345678901234567890" |    57edf4a22be3c955ac49da2e2107b67a  | PASS|
 
+#### <p align="center">Testing the application
 
+We start the testing of this application through compiling the program firstly. We enter the command stated above in the correct directory expecting no output in the terminal just a new executable file created in the project directory. If there is errors in the code the program will not compile and the application fails the initial testing.
+<br>
+
+This applicatin is designed to take only one command line parameter when executing the file.
+The following commands are accepted by the application.
+
+* --help
+* --test
+* --userInput
+* --resources
+
+For each one of these parameters a different result should appear to the user. By testing each one of theses separately.
+#### --help
+When we add this command line parameter to runnng the project we expect firstly for the project not to crash and for it to accept the perameter "--help".
+When --help is entered user should gain enough information about how to run the application so he/she would be able to run it correctly.
+--help should output
++ Short description on what this application is designed to accomplish and its objectives.
++ A list of acceptable command line arguments and what they output.
++ The command to run the application 
+
+#### --test
+The --test command should also be accepted by the application without crashing.<br>
+"--test" command was designed by me to automaticaly test the application with string inouts that were given out by the https://tools.ietf.org/html/rfc1321 website and compare the result with the expected result.
+--test should output
++ The string its testing.
++ Result of that string hashed using the md5 application
++ Expected result from the https://tools.ietf.org/html/rfc1321 website for the following tests.
+
+#### --userInput
+This option was designed to let the user hash witch ever string the please using the md5 algorithm. First and foremost this command must be accepted in the appliction like the others without crashing.
+--userInput should have the following outputs
++ Message asking a user to enter an input. 
++ Application should not continue until the user enters a string or empty string and presses enter to continue.
++ After the above step is done the String entered should be hashed and output should be printed out to the user.
+
+#### --resources
+This is the final command line peramater available to the user. It describes to the user more information on the project.
+--resources should output 
++ Project repository link 
++ Readme .md file link
++ The reasearch link that was carried out fr this project.
+
+
+#### Wrong command or no command
+This should output to the user an error message and the acceptable commands for this project.
 
 
 ### <p align="center">Algorithm 
 ~~Give an overview and explanation of the main algorithm(s)
 in your code. You might use a well-thought out diagram here.~~
+
+
 
 ### <p align="center">Complexity 
 ~~This should be the most significant part of the report.
