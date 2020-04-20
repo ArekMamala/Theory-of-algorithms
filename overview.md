@@ -147,6 +147,51 @@ This should output to the user an error message and the acceptable commands for 
 ~~Give an overview and explanation of the main algorithm(s)
 in your code. You might use a well-thought out diagram here.~~
 
+<p align="center"> <img src="Md5/Assets/MessageAndDiggest.png" width="1000" height="400" />
+
+<i><b>What is the MD5 algorithm ?</b><br>
+The MD5 hash function was originally designed for use as a 
+secure cryptographic hash algorithm for authenticating digital signatures
+</i><br>
+
+The <b>first step</b> in this algorithm is to append padding bits. We need to make the lenght of the file in bits to be 64bits less than a multiple of 512.
+
+Padding is always performed even if the length of the message is 64bits less than multiple of 512.
+
+A single "1" bit is appendded to the message and then a "0" bits are appended so that the length of bits in padded message becomes the correct secessary length of the message in bits.
+
+Ammount of bits appended is in the range from 1 to 512 at most.
+
+The <b>second step</b> is to append the length by 64 bits.
+A 64-bit representation of the message length is added to the outcome of step number one.<br>
+After these 64 bits are added the message has a complete length that is a multiple of 512 bits.
+This then gets devided into 16 different blocks size of 32-bit words.
+
+The <b>third step</b> is the impplementation step. initializing the MD buffer.<br>
+A for word buffer <b>(A,B,C,D)</b> these are used to calculate the message digest they are each 32-bit words.
+These registers are initialized to the following hexdecimal values.
++ A => 01234567
++ B => 89abcdef
++ C => fedcba98
++ D => 76543210
+ 
+
+Message prcessing <b>step four</b> 16-word blocks are used for four functions that are defined such that each of the functions takes in an input  of three 32-bit words and produces a 32 bit word as an output.
++ F(x, y, z) (((x) & (y)) | ((~x) & (z)) 
++ G(x, y, z) (((x) & (z)) | ((y) & (~z)))
++ H(x, y, z) ((x) ^ (y) ^ (z))
++ I(x, y, z) ((y) ^ ((x) | (~z))) 
+
+Each round consists of 16 steps 
++ ``` 
+    a= b+((a+F(b,c,d)+M[i]+ T[k])<<<s)
++ a, b, c, d refer to the four words of the buffer in step three.
++ F(b, c, d) is a different nonlinear function for each round
++ ``` 
+    a= b+((a+F(b,c,d)+M[i]+ T[k])<<<s)
+
+
+
 
 
 ### <p align="center">Complexity 
@@ -162,7 +207,9 @@ should be carefully referenced.~~
 references should not just be a list of websites. Instead, there
 should be a short explanation of why each reference is relevant to
 your document.~~
-https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
+
+https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet<br>
 https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository 
-https://git-scm.com/downloads
-https://rupinderjeetkaur.wordpress.com/2014/06/20/run-a-cc-program-on-terminal-using-gcc-compiler/
+<br>https://git-scm.com/downloads
+<br>https://rupinderjeetkaur.wordpress.com/2014/06/20/run-a-cc-program-on-terminal-using-gcc-compiler/
+<br>https://www.youtube.com/watch?v=-uRpRMpvdm0
