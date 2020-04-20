@@ -188,7 +188,35 @@ Each round consists of 16 steps
 + a, b, c, d refer to the four words of the buffer in step three.
 + F(b, c, d) is a different nonlinear function for each round
 + ``` 
-    a= b+((a+F(b,c,d)+M[i]+ T[k])<<<s)
+    NONLINEAR FUNCTIONS FOR EACH ROUND 
+
+    #define FF(a, b, c, d, x, s, ac)                 \
+  {                                              \
+    (a) += F((b), (c), (d)) + (x) + (ac); \
+    (a) = ROTATE_LEFT((a), (s));                 \
+    (a) += (b);                                  \
+  }
+    #define GG(a, b, c, d, x, s, ac)                 \
+  {                                              \
+    (a) += G((b), (c), (d)) + (x) + ac; \
+    (a) = ROTATE_LEFT((a), (s));                 \
+    (a) += (b);                                  \
+  }
+    #define HH(a, b, c, d, x, s, ac)                 \
+  {                                              \
+    (a) += H((b), (c), (d)) + (x) + ac; \
+    (a) = ROTATE_LEFT((a), (s));                 \
+    (a) += (b);                                  \
+  }
+    #define II(a, b, c, d, x, s, ac)                 \
+  {                                              \
+    (a) += I((b), (c), (d)) + (x) + ac; \
+    (a) = ROTATE_LEFT((a), (s));                 \
+    (a) += (b);                                  \
+  }
+  ```
+  
+
 
 
 
