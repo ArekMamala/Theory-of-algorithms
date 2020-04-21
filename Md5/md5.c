@@ -31,6 +31,36 @@
 #define S44 21
 
 
+
+// Pre-defined hash values
+const uint32_t k[] = {
+    0xd76aa478, 0xe8c7b756, 0x242070db, 0xc1bdceee,
+    0xf57c0faf, 0x4787c62a, 0xa8304613, 0xfd469501,
+    0x698098d8, 0x8b44f7af, 0xffff5bb1, 0x895cd7be,
+    0x6b901122, 0xfd987193, 0xa679438e, 0x49b40821,
+    0xf61e2562, 0xc040b340, 0x265e5a51, 0xe9b6c7aa,
+    0xd62f105d, 0x02441453, 0xd8a1e681, 0xe7d3fbc8,
+    0x21e1cde6, 0xc33707d6, 0xf4d50d87, 0x455a14ed,
+    0xa9e3e905, 0xfcefa3f8, 0x676f02d9, 0x8d2a4c8a,
+    0xfffa3942, 0x8771f681, 0x6d9d6122, 0xfde5380c,
+    0xa4beea44, 0x4bdecfa9, 0xf6bb4b60, 0xbebfbc70,
+    0x289b7ec6, 0xeaa127fa, 0xd4ef3085, 0x04881d05,
+    0xd9d4d039, 0xe6db99e5, 0x1fa27cf8, 0xc4ac5665,
+    0xf4292244, 0x432aff97, 0xab9423a7, 0xfc93a039,
+    0x655b59c3, 0x8f0ccc92, 0xffeff47d, 0x85845dd1,
+    0x6fa87e4f, 0xfe2ce6e0, 0xa3014314, 0x4e0811a1,
+    0xf7537e82, 0xbd3af235, 0x2ad7d2bb, 0xeb86d391};
+
+
+//got from sha256 algorithm
+union block {
+  uint64_t sixfour[8];
+  uint32_t threetwo[16];
+  uint8_t eight[64];
+};
+
+typedef unsigned long int UINT4;
+
 /* ROTATE_LEFT rotates x left n bits.
  */
 #define ROTATE_LEFT(x, n) (((x) << (n)) | ((x) >> (32 - (n))))
@@ -41,14 +71,6 @@
 #define G(x, y, z) (((x) & (z)) | ((y) & (~z)))
 #define H(x, y, z) ((x) ^ (y) ^ (z))
 #define I(x, y, z) ((y) ^ ((x) | (~z)))
-
-//got from sha256 algorithm
-union block {
-  uint64_t sixfour[8];
-  uint32_t threetwo[16];
-  uint8_t eight[64];
-};
-typedef unsigned long int UINT4;
 
 /* FF, GG, HH, and II transformations for rounds 1, 2, 3, and 4.
 Rotation is separate from addition to prevent recomputation.
@@ -86,26 +108,9 @@ static unsigned char PADDING[64] = {
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
-// Pre-defined hash values
-const uint32_t k[] = {
-    0xd76aa478, 0xe8c7b756, 0x242070db, 0xc1bdceee,
-    0xf57c0faf, 0x4787c62a, 0xa8304613, 0xfd469501,
-    0x698098d8, 0x8b44f7af, 0xffff5bb1, 0x895cd7be,
-    0x6b901122, 0xfd987193, 0xa679438e, 0x49b40821,
-    0xf61e2562, 0xc040b340, 0x265e5a51, 0xe9b6c7aa,
-    0xd62f105d, 0x02441453, 0xd8a1e681, 0xe7d3fbc8,
-    0x21e1cde6, 0xc33707d6, 0xf4d50d87, 0x455a14ed,
-    0xa9e3e905, 0xfcefa3f8, 0x676f02d9, 0x8d2a4c8a,
-    0xfffa3942, 0x8771f681, 0x6d9d6122, 0xfde5380c,
-    0xa4beea44, 0x4bdecfa9, 0xf6bb4b60, 0xbebfbc70,
-    0x289b7ec6, 0xeaa127fa, 0xd4ef3085, 0x04881d05,
-    0xd9d4d039, 0xe6db99e5, 0x1fa27cf8, 0xc4ac5665,
-    0xf4292244, 0x432aff97, 0xab9423a7, 0xfc93a039,
-    0x655b59c3, 0x8f0ccc92, 0xffeff47d, 0x85845dd1,
-    0x6fa87e4f, 0xfe2ce6e0, 0xa3014314, 0x4e0811a1,
-    0xf7537e82, 0xbd3af235, 0x2ad7d2bb, 0xeb86d391};
 
-//from sha 256 argorithm chenged to suit md5 p
+
+//from sha 256 argorithm chenged to suit md5 
 int nextblock(union block *M, FILE *infile, uint64_t *nobits, enum flag *status) {
   //padding 
   // no bytes variable
@@ -289,20 +294,6 @@ int main(int argc, char *argv[])
 {
 
   int i;
-  /*//file reading from sha256 example
-  if (argc != 2)
-  {
-    //if the amount of iles is not right
-    printf("Error: expected single filename as argument.\n");
-    return 1;
-  }*/
-
-  printf("\nplease enter one of the following command line arguments.\n\n");
-  printf("--help => How to run Program information.\n");
-  printf("--test => Automatic testing of the following strings.\n");
-  printf("--userInput => Testing of Users input.\n");
-  printf("--resources => Resoures of the project.\n\n");
-  
   if( argc == 2 )
   {
       printf("The arguments supplied are: ");
@@ -381,7 +372,12 @@ int main(int argc, char *argv[])
   }
   else
   {
-      printf("argument list is empty.\n");
-  }
+    printf("Incorect input format.\n");
+    printf("\nplease enter one of the following command line arguments.\n\n");
+    printf("--help => How to run Program information.\n");
+    printf("--test => Automatic testing of the following strings.\n");
+    printf("--userInput => Testing of Users input.\n");
+    printf("--resources => Resoures of the project.\n\n");
+   }
   
 }

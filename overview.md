@@ -147,7 +147,7 @@ This should output to the user an error message and the acceptable commands for 
 ~~Give an overview and explanation of the main algorithm(s)
 in your code. You might use a well-thought out diagram here.~~
 
-<p align="center"> <img src="Md5/Assets/MessageAndDiggest.png" width="1000" height="400" />
+<p align="center"> <img src="Md5/Assets/MessageAndDiggest.png" height="200" />
 
 <i><b>What is the MD5 algorithm ?</b><br>
 The MD5 hash function was originally designed for use as a 
@@ -215,11 +215,9 @@ Each round consists of 16 steps
     (a) += (b);                                  \
   }
   ```
-  
 
-
-
-
+#### <p align="center"> Here is a drawing representation of md5 message processing
+<p align="center"> <img src="Md5/Assets/drawingmd5.jpg" width="500" height="250" />
 
 
 ### <p align="center">Complexity 
@@ -230,6 +228,134 @@ algorithm. That is, algorithms that attempt to find an input for
 which the MD5 algorithm produces a given output. You should
 research this topic before writing this section and your analysis
 should be carefully referenced.~~
+
+
+#### <p align="center"> Comlpexity of my developed Algorithm
+At the initial state of the program is accepting the command prompt arguments. The application has four oucomes whe it come to accpeting the command propt arguments.
+
+Two of these arguments run the hash algorithm and test its working the remaining two are more of a healping hand to the user to recive the correct required arguments.
+
+The application has given out the ability to read in the users costume text to be hashed using this algorithm but has also automatic tests added to its workings.
+To understand how this work please look at the run section of the overview where all the commands line arguments are explained in detail.
+
+####  What the code consists off
+
+First of we have the Constants for MD5Transform routine these are used in the FF, GG, HH, II functions. Following these constants we have the 65 pre-defined hash values which also get called in the FF, GG, HH, II values.
+
+Following by a unio block with three vars a uint64_t, uint32_t and a uint8_t.
+
+After these constants are defined the basic md5 functions are created 
+F, G, H, I.
+Once we have these defined we are able to create the FF, GG, HH and II transformations for each one of these four rounds in the md5_hash function.
+
+We then move into the nextblock functions which takes in the union block, FILE, uint64_t and an enum flag with its status.
+
+This function goes through if statments.
+First one checks if the status is equal to finish if it is return zero.
+Then if the status pointer is PAD0 we then need an all-padding block without the 1 bit. Change the status to FINISH and return 1.
+
+After this if statment we check if we can fit all the padding in the last block at the end of this if statment change status  to PAD0 and return 1.
+
+If none of these if statments come in to play we have read between inculding 56 and excluding 64 bytes. We then go through a for loop change status to PAD0 and return one.
+
+Below that function in the program we have the md5_hash function which takes in a pointer of a union block and a uint32_t
+
+creates four uint32_t "a, b, c, d" we equal them to the hash values passed in when the function is called. We then use the four transformations each one 16 times as it equals to 64 at the end.
+Each transformation is called 16 times starting with 
+1. FF
+2. GG
+3. HH
+4. II <br>
+
+Through these functions we pass the a, b, c ,d the thretwo of union block the constants defined at the top and the 64 pre-defined hash values.
+
+At the end of the function each hash value passed in is equal to itself plus the value of a, b, c, or d depending which hash it is.
+
+Next function that is present after this one is hashTheFile function it opens a file that is used for hashing strings. If the file is not availablen to open anderror message is printed out to the user.
+
+After this is done we create variables necessary for us to run the funstions created above.
+
+We create a while loop where we call the nextBlock function and variables we created necessary for this function.
+
+In that while loop execute the md5_hash function. This gets the file reads through it and hashes the file. We then print out the hashed value to the user and close the file.
+
+Next function present in this program is the writeToFile function where chars are passed and we print to the fille the text that is passed through the function.
+
+The main method is the last method in the program and mostly here we deal with command line arguments depending on arguments different result must be present.
+
+We have an if statment for the amount of arguments that are present in while running the program. 
+If the amount of arguments is wrong error with extar information is printed out. 
+
+When the argument is equal to "--test" differnt strings are automaticaly written to a file and that file is hashhed giving out the result and expected result.
+
+If the argument is equal to "--userInput" the user has the ability to enter a string of characters which get outputed to a file that then gets hashed and the result is printed to the user.
+
+Other command line arguments such as s "--help" and "--resources" printout the help and project informations to the user.
+
+This is the complexity of the md5 algorithm reasearched coaded compiled and tested by Arkadiusz Mamala Gmit student- G00349088
+
+#### <p align="center"> Insight on md5 usage
+
+|Keys for comparison   |     MD5      |  SHA |
+|:----------:|:-------------:|:------:|
+| Security |Less secure than SHA | High secure than MD5  |
+| Message Digest Length |128 Bits |  160 bits| 
+| Attacks required to find out Original Message | 2^128 bit operations required to break |2^160 operations required to break  | 
+| Speed | Faster only 64 iterations |Slower requires 80 iterations |
+| Successful attacks so far |Attacks reported to some extents |No such attacks reported yet  | 
+
+
+MD5 algorithm is it reliable, is it still in use currently can it be broken ? 
+<br>These are some of the questions we ask ourselves when we discuss different hashing algorithms and compare them.
+There are many hashing algorithms out there on the web devided in opinions some are better and more secure than others. 
+
+
+Over a quarter of all the major content management systems (CMSs) use the old and outdated MD5 hashing scheme as the default for securing and storing user passwords.
+
+The md5 algorithm is kown to be broken, there have been techniques developed create the same hash using arbitrary input. Also, GPUs are powerful enough to brute force passwords.
+I will get into more detail about these techniques but first off. What can we use the md5 algorithm for is there still use for it ?
+The MD5 algorithm is still heavily used by many organizations and businesses .
+
+Althought this is true the MD5 algorithm should not be used for cryptography but there is many tasks that this algorithm can simplify for the people and systems.
+This algorithm can be used for a fast image or string comparison.
+<br>MD5 is prefered over other algorithms if you're forced to generate many digests.
+Md5 algorithm is faster which is one of its main strengths against the other algorithms.
+
+#### <p align="center"> Reversing the algorithm 
+
+The MD5 algorithm cannot be reverse engineered it is impossible so far.
+The algorithm is ireversable. It changes any length of string form size of multiple of 512 to a total size of 128bits.
+
+<b>Here is a simple example of this theory proven right</b>
++ 15 Mod 4 = 3
++ Formula: x Mod 4
++ you can't deduce x as it could be 3, 7, 11, 15 etc...
+
+As we can see above putting 15 in as x will always give us the anser of 3 but there is no way to deduce the original number.
+
+Its obvious that these algorithms are much more complex and much difficult to understand. 
+
+<b>Is there ways around it how do we figure out these hashes ?</b>
+
+In 2010 the MD5 algorithm was declared as “cryptographically broken and unsuitable for further use.” by the CMU Software Engineering Institute.
+The MD5 algorithm is said to have a few weeknesses 
++ its possible to find a collision 
++ because some string and paswords are usually short and people often use common values 
+  + if the password is common such as "password" 
+  + therefore you can sometimes make a reasonable good guess at someones password 
+
+<b>Hash collision</b>
+ Hash collision attack is an aim to find two files or strings with the same hash function to produce same hash outcome.
+ Collision attacks the odds are very low especially for functions with very large output sizes
+
+ How do we find what a certain hashcode represents. We can simply use a google search for a MD5 hashdecoder. 
+ These decoders are not very reliable the way that these decoders work is.
+ + They have a large database with md5 hash values.
+ + You enter the string that you have hashed and result pops up.
+ + This is done by comparing the hash entered againts the large database. 
+
+This is the only way that we can decode these hash values by comparing them to already existent. 
+
 ### <p align="center">References 
 ~~Provide a list of references used in your project. The
 references should not just be a list of websites. Instead, there
@@ -241,3 +367,9 @@ https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cl
 <br>https://git-scm.com/downloads
 <br>https://rupinderjeetkaur.wordpress.com/2014/06/20/run-a-cc-program-on-terminal-using-gcc-compiler/
 <br>https://www.youtube.com/watch?v=-uRpRMpvdm0
+<br>https://stackoverflow.com/questions/2948156/algorithm-complexity-security-md5-or-sha1
+<br>https://www.youtube.com/watch?v=53O9J2J5i14
+<br>https://www.zdnet.com/article/a-quarter-of-major-cmss-use-outdated-md5-as-the-default-password-hashing-scheme/
+<br>https://www.johndcook.com/blog/2019/01/24/reversing-an-md5-hash/
+<br>https://stackoverflow.com/questions/25753741/why-cant-md5-be-reverse-engineered
+<br>https://privacycanada.net/hash-functions/hash-collision-attack/
