@@ -71,6 +71,33 @@ command line.
        + "a.out" is the file created by compiling the c code
        + "test" is a testing empty text file
 
+
+
+#### <p align="center">Project Plan
+|No.   | Things to do     |  When |  Completed/Not Completed
+|:----------:|:-------------:|:------:|:---------:|
+| 1 |Watch class Videos | As videos are released <br>Each week | Completed |
+| 2 |Code up SHA256  | After videos are seen | Completed     |
+| 3 | Compare Sha256 with MD5 | After Sha256 is complete |Completed |
+| 4 | Determin necesary code <br>from sha256 for MD5 | When step 4 is completed  | Completed   |
+| 5 | Study the website https://tools.ietf.org/html/rfc1321 | Any time During the project. | Completed       |
+| 6 | Reasearch Md5 algorithm | Through out the project| Completed |
+| 7 | Start coding algorithm | After md5 is reasearched| Completed |
+| 8 | Have basic program done in c | Any time sooner the better| Completed |
+| 9 | Files reading in | Through out the project| Completed |
+| 10 | Coverting to hash values| Through out the project| Completed |
+| 11 | correct hash value | Towards the end of the year| Not Completed |
+| 12 | Reasearch for project started | After md5 program done| Completed |
+| 13 | ReadMe started| End of the project| Completed |
+| 14 | Complete Readme file| End of semester| Completed |
+| 15 | Add command line arguments| Before new deadline| Completed |
+| 16 | Start Overview| End of semester| Completed |
+| 17 | Finish Overview| End of semester| Completed |
+| 18 | Fix output issue| End of semester|Not Completed |
+| 19 | Tidy as much code as possible|Befored deadline| Not Completed |
+
+
+
 ## Reasearch 
   * Reasearch for this project is in the wiki page of the project
   * [https://github.com/ArekMamala/Theory-of-algorithms/wiki](https://github.com/ArekMamala/Theory-of-algorithms/wiki)
