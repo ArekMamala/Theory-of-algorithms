@@ -13,13 +13,12 @@ command line.
 
 ## Project repository content
   This trepository consists of three folders 
-  + .vscode
   + Md5
   + shaAlgorythm
   Also consists of 
   + gitignore
   + README.md
-  
+  + overview.md  
   #### shaAlgorythm folder
    This is the sha256 algorithm that has been developed through out finalyear semester 
    in the course "Theory Of Algorithms".
@@ -68,8 +67,18 @@ command line.
      + "sudo gcc md5.c" 
    1. using terminal run the folowing command to run algorithm
      + "./a.out test" 
-       + "a.out" is the file created by compiling the c code
-       + "test" is a testing empty text file
+       + To run this program the command used in the terminal is 
+       + ./a.out <command line argument> (--help) 
+
+   1. Depending on the command line argument entered the application will execute different options.
+   1. These are the following command line arguments
+    * --help
+    * --test
+    * --userInput
+    * --resources
+
+   1. For more information on how to run or test the application look at the overview.md file 
+   
 
 
 
@@ -101,11 +110,6 @@ command line.
 ## Reasearch 
   * Reasearch for this project is in the wiki page of the project
   * [https://github.com/ArekMamala/Theory-of-algorithms/wiki](https://github.com/ArekMamala/Theory-of-algorithms/wiki)
-### References
-+ https://searchsecurity.techtarget.com/definition/MD5
-+ https://tools.ietf.org/html/rfc1321
-+ https://github.com/ianmcloughlin/project-thalg-2020/raw/master/project.pdf
-+ https://www.youtube.com/watch?v=53O9J2J5i14&t=226s#
 
 
 
