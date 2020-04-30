@@ -79,13 +79,13 @@ To get the project downloaded, the user can do this in two ways using the termin
 #### <p align="center">Test Cases for String hasshing
 |Test Case   |      Test      |  Expected Result |  Pass/Fail
 |:----------:|:-------------:|:------:|---------:|
-| 1 | "" | d41d8cd98f00b204e9800998ecf8427e | PASS|
-| 2 | "a" | 0cc175b9c0f1b6a831c399e269772661 | PASS|
-| 3 | "abc" | 900150983cd24fb0d6963f7d28e17f72  | PASS|
-| 4 | "message digest" |    f96b697d7cb7938d525a2f31aaf161d0  | PASS|
-| 5 | "abcdefghijklmnopqrstuvwxyz" |    c3fcd3d76192e4007dfb496cca67e13b  | PASS|
-| 6 | "ABCDEFGHIJKLMNOPQRSTUVWXYZab<br>cdefghijklmnopqrstuvwxyz0123456789" |    d174ab98d277d9f5a5611c2c9f419d9f  | PASS|
-| 7 | "123456789012345678901234567890123<br>45678901234567890123456789012345678901234567890" |    57edf4a22be3c955ac49da2e2107b67a  | PASS|
+| 1 | "" | d41d8cd98f00b204e9800998ecf8427e | FAIL|
+| 2 | "a" | 0cc175b9c0f1b6a831c399e269772661 | FAIL|
+| 3 | "abc" | 900150983cd24fb0d6963f7d28e17f72  | FAIL|
+| 4 | "message digest" |    f96b697d7cb7938d525a2f31aaf161d0  | FAIL|
+| 5 | "abcdefghijklmnopqrstuvwxyz" |    c3fcd3d76192e4007dfb496cca67e13b  | FAIL|
+| 6 | "ABCDEFGHIJKLMNOPQRSTUVWXYZab<br>cdefghijklmnopqrstuvwxyz0123456789" |    d174ab98d277d9f5a5611c2c9f419d9f  | FAIL|
+| 7 | "123456789012345678901234567890123<br>45678901234567890123456789012345678901234567890" |    57edf4a22be3c955ac49da2e2107b67a  | FAIL|
 
 #### <p align="center">Testing the application
 

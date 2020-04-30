@@ -317,30 +317,40 @@ int main(int argc, char *argv[])
             printf("\n*** Test ***");
             writeToFile("");
             hashTheFile();
+            printf("Expected Result: d41d8cd98f00b204e9800998ecf8427e\n");
     
             printf("\nString tested: 'a'");
             writeToFile("a");
             hashTheFile();
+            printf("Expected Result: 0cc175b9c0f1b6a831c399e269772661\n");
 
             printf("\nString tested: 'abc'");
             writeToFile("abc");
-            hashTheFile();
+            hashTheFile();            
+            printf("Expected Result: 900150983cd24fb0d6963f7d28e17f72\n");
 
             printf("\nString tested: 'message digest'");
             writeToFile("message digest");
             hashTheFile();
+            printf("Expected Result: f96b697d7cb7938d525a2f31aaf161d0\n");
 
             printf("\nString tested: 'abcdefghijklmnopqrstuvwxyz'");
             writeToFile("abcdefghijklmnopqrstuvwxyz");
             hashTheFile();
+            printf("Expected Result: c3fcd3d76192e4007dfb496cca67e13b\n");
+
 
             printf("\nString tested: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'");
             writeToFile("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789");
             hashTheFile();
+            printf("Expected Result: d174ab98d277d9f5a5611c2c9f419d9f\n");
+
 
             printf("\nString tested: '12345678901234567890123456789012345678901234567890123456789012345678901234567890'");
             writeToFile("12345678901234567890123456789012345678901234567890123456789012345678901234567890");
             hashTheFile();
+            printf("Expected Result: 57edf4a22be3c955ac49da2e2107b67a\n");
+
 
           }else if (strcmp(argv[i],"--userInput")  == 0){
            
